@@ -40,7 +40,7 @@ public class NumberResult {
         //AES key should be less or equal of 32 bytes (bc key is 16, 24 or 32 bytes)
         BigInteger value = asBigInt();
         if(value == null)
-            return asString().length() >= 32;
+            return asString().length() <= 32;
         isnumber = true;
         return value.compareTo(AES_LIMIT) < 0;
     }
