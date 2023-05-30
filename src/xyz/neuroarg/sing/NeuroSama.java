@@ -34,7 +34,9 @@ public class NeuroSama {
         }
     }
     
-    private final static boolean SHOULD_REGISTER_CODE = true;
+    //default by false
+    private final static boolean SHOULD_REGISTER_CODE = false;
+    private final static boolean ONLY_GOOD_KEY_SIZE = false;
     
     public void endOfSong() {
         
@@ -54,7 +56,7 @@ public class NeuroSama {
             
             for (NumberResult result : results) {
                 String resultstr = result.asString();
-                if(resultstr.length() != 32 && resultstr.length() != 24 && resultstr.length() != 16){//check ascii key size
+                if(ONLY_GOOD_KEY_SIZE && resultstr.length() != 32 && resultstr.length() != 24 && resultstr.length() != 16){//check ascii key size
                     continue;
                 }
                 bw.write(resultstr);
@@ -72,7 +74,7 @@ public class NeuroSama {
             
             for (NumberResult result : results) {
                 if(result.isNumber()){//check is valid number
-                    bw.write(result.asString());
+                    bw.write(result.asBigInt().toString(16));//write as hex
                     bw.newLine();
                 }
             }
@@ -90,7 +92,7 @@ public class NeuroSama {
                 
                 for (NumberResult result : results) {
                     int keylen = result.asString().length();
-                    if(keylen != 32 && keylen != 24 && keylen != 16){//check ascii key size
+                    if(ONLY_GOOD_KEY_SIZE && keylen != 32 && keylen != 24 && keylen != 16){//check ascii key size
                         continue;
                     }
                     bw.write(result.getCode());

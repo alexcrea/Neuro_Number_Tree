@@ -1,10 +1,17 @@
 package xyz.neuroarg.sing.operators.strings;
 
-public class XMultiplication extends RigthConcatenation{
+import xyz.neuroarg.sing.operators.MultipleOperator;
+
+/**
+ * if multiply mean add "x" and the number (or *)
+ */
+public class XMultiplication extends MultipleOperator {
     
-    //used for the phone thing. I did not really read that
     public XMultiplication(String toConcate) {
-        super("X"+toConcate);
+        super(
+                new RigthConcatenation("x"+toConcate),
+                new RigthConcatenation("*"+toConcate)
+        );
     }
     
 }
