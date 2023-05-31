@@ -4,7 +4,7 @@ import xyz.neuroarg.sing.LyricOperators;
 import xyz.neuroarg.sing.NeuroSama;
 import xyz.neuroarg.sing.NumberResult;
 
-import java.util.List;
+import java.util.Set;
 
 public class MultipleOperator extends LyricOperators {
     
@@ -17,7 +17,7 @@ public class MultipleOperator extends LyricOperators {
     public void interpretLyric(ResultAdder adder, NumberResult oldresult) {}
     
     @Override
-    public void interpretLyrics(NeuroSama neuroSama, List<NumberResult> oldresults) {
+    public void interpretLyrics(NeuroSama neuroSama, Set<NumberResult> oldresults) {
         for (LyricOperators operator : operators) {
             operator.interpretLyrics(neuroSama,oldresults);
         }

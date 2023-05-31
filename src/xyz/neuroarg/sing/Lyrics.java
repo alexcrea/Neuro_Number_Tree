@@ -58,7 +58,8 @@ public enum Lyrics {
             new FlipOperator()),
     Make2_3(//new NothingOperator(), //Make the 2 a 3 yeah
             new ReplaceAllOperator("2","3")),
-    abcdefg(new NothingOperator() //ABCDEFG
+    abcdefg( new NothingOperator(), //ABCDEFG
+             new GlobalAddOperator(123456)
     ),
     
     MultBy9(//new NothingOperator(), //Multiply by 9 yeah
@@ -73,7 +74,8 @@ public enum Lyrics {
             new GlobalAddOperator(17),
             new MoveExistingToLeft("17")
     ),
-    abcdefg2(new NothingOperator() //ABCDEFG
+        abcdefg2(new NothingOperator(), //ABCDEFG
+                 new GlobalAddOperator(123456)
     )
     
     ;

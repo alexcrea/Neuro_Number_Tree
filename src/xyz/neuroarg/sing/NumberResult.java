@@ -1,6 +1,7 @@
 package xyz.neuroarg.sing;
 
 import java.math.BigInteger;
+import java.util.Objects;
 
 public class NumberResult {
     
@@ -31,7 +32,8 @@ public class NumberResult {
         
     }
     
-    private static final BigInteger AES_LIMIT = BigInteger.valueOf(2).pow(32);
+    //we want 32 bytes no bits
+    private static final BigInteger AES_LIMIT = BigInteger.valueOf(256).pow(32);
     
 
     //used only for writing to file
@@ -55,5 +57,17 @@ public class NumberResult {
     
     public String getCode() {
         return code;
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof NumberResult that)) return false;
+        return Objects.equals(numberStr, that.numberStr);
+    }
+    
+    @Override
+    public int hashCode() {
+        return Objects.hash(numberStr);
     }
 }

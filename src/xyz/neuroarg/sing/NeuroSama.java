@@ -1,18 +1,22 @@
 package xyz.neuroarg.sing;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.math.BigInteger;
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * the name of this class is only used as a joke on the Main (Sing.java)
  */
 public class NeuroSama {
     
-    ArrayList<NumberResult> results;
+    Set<NumberResult> results;
     
     NeuroSama(){
-        this.results = new ArrayList<>();
+        this.results = new HashSet<>();
         addDefaultNumbers();
     }
     
@@ -21,14 +25,14 @@ public class NeuroSama {
         
     }
     
-    public ArrayList<NumberResult> getResults() {
+    public Set<NumberResult> getResults() {
         return results;
     }
     
     public void sing(Lyrics lyric){
         System.out.println(lyric.name());
-        ArrayList<NumberResult> oldresult = this.results;
-        this.results = new ArrayList<>();
+        Set<NumberResult> oldresult = this.results;
+        this.results = new HashSet<>();
         for (LyricOperators operator : lyric.getOperators()) {
             operator.interpretLyrics(this,oldresult);
         }
@@ -56,7 +60,9 @@ public class NeuroSama {
             
             for (NumberResult result : results) {
                 String resultstr = result.asString();
-                if(ONLY_GOOD_KEY_SIZE && resultstr.length() != 32 && resultstr.length() != 24 && resultstr.length() != 16){//check ascii key size
+                if(ONLY_GOOD_KEY_SIZE ?
+                        resultstr.length() != 32 && resultstr.length() != 24 && resultstr.length() != 16 : //check ascii key size
+                        resultstr.length() > 32){
                     continue;
                 }
                 bw.write(resultstr);
@@ -120,4 +126,7 @@ public class NeuroSama {
         
     
     }
+    
+    
+    
 }

@@ -4,8 +4,8 @@ import xyz.neuroarg.sing.LyricOperators;
 import xyz.neuroarg.sing.NeuroSama;
 import xyz.neuroarg.sing.NumberResult;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class SimultaneousMultipleOperation extends MultipleOperator{
     
@@ -15,10 +15,10 @@ public class SimultaneousMultipleOperation extends MultipleOperator{
     }
     
     @Override
-    public void interpretLyrics(NeuroSama neuroSama, List<NumberResult> results) {
+    public void interpretLyrics(NeuroSama neuroSama, Set<NumberResult> results) {
         ResultAdder adder = new ResultAdder(null,this);
         for (LyricOperators operator : operators) {
-            adder.setResult(new ArrayList<>());
+            adder.setResult(new HashSet<>());
             adder.setParent(operator);
             for (NumberResult result : results) {
                 operator.interpretLyric(adder,result);

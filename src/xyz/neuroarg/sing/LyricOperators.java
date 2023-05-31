@@ -1,13 +1,13 @@
 package xyz.neuroarg.sing;
 
 import java.math.BigInteger;
-import java.util.List;
+import java.util.Set;
 
 public abstract class LyricOperators {
     
     public abstract void interpretLyric(ResultAdder adder, NumberResult oldresult);
     
-    public void interpretLyrics(NeuroSama neuroSama, List<NumberResult> oldresults){
+    public void interpretLyrics(NeuroSama neuroSama, Set<NumberResult> oldresults){
         ResultAdder adder = new ResultAdder(neuroSama.getResults(),this);
         for (NumberResult result : oldresults) {
             adder.setOldresult(result);
@@ -18,17 +18,17 @@ public abstract class LyricOperators {
     public static class ResultAdder{
         
         protected Object parent;
-        List<NumberResult> result;
+        Set<NumberResult> result;
         protected NumberResult oldresult;
-        public ResultAdder(List<NumberResult> result, Object parent){
+        public ResultAdder(Set<NumberResult> result, Object parent){
             this.result = result;
             this.parent = parent;
         }
         
-        public void setResult(List<NumberResult> result) {
+        public void setResult(Set<NumberResult> result) {
             this.result = result;
         }
-        public List<NumberResult> getResult() {
+        public Set<NumberResult> getResult() {
             return result;
         }
         
