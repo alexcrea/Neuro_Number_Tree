@@ -1,6 +1,5 @@
-IDK how to make good README, so maybe someone update it ?
+Archive reason: Resolved (not by me) (see discord) (was a good try)
 
-We do not own neuroarg.xyz i'm just bad at naming package
 ***
 ## Neuro Number's video tree explorer
 
